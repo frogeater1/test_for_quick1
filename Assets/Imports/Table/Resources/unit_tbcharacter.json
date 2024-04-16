@@ -1,0 +1,22 @@
+[
+  {
+    "id": "Wizard",
+    "name": "",
+    "desc": "",
+    "prefab": "Wizard",
+    "skills": [
+      "远程普攻"
+    ],
+    "moveSpeed": 3
+  },
+  {
+    "id": "Monster",
+    "name": "",
+    "desc": "",
+    "prefab": "Monster",
+    "skills": [
+      "冲撞"
+    ],
+    "moveSpeed": 1.5
+  }
+]

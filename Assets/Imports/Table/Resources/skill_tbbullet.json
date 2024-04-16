@@ -1,0 +1,9 @@
+[
+  {
+    "id": "基础子弹",
+    "name": "",
+    "desc": "",
+    "prefab": "Bullet",
+    "script": "Demo.Bullet.基础子弹"
+  }
+]

@@ -1,0 +1,16 @@
+[
+  {
+    "id": "远程普攻",
+    "name": "",
+    "desc": "",
+    "script": "Demo.Skill.远程普攻",
+    "bullet": "基础子弹"
+  },
+  {
+    "id": "冲撞",
+    "name": "",
+    "desc": "",
+    "script": "Demo.Skill.冲撞",
+    "bullet": ""
+  }
+]
