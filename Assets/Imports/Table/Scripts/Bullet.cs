@@ -22,6 +22,7 @@ public sealed partial class Bullet : Luban.BeanBase
         { if(!_buf["desc"].IsString) { throw new SerializationException(); }  desc = _buf["desc"]; }
         { if(!_buf["prefab"].IsString) { throw new SerializationException(); }  prefab = _buf["prefab"]; }
         { if(!_buf["script"].IsString) { throw new SerializationException(); }  script = _buf["script"]; }
+        { if(!_buf["moveSpeed"].IsNumber) { throw new SerializationException(); }  moveSpeed = _buf["moveSpeed"]; }
     }
 
     public static Bullet DeserializeBullet(JSONNode _buf)
@@ -43,12 +44,14 @@ public sealed partial class Bullet : Luban.BeanBase
     public readonly string desc;
     public readonly string prefab;
     public readonly string script;
+    public readonly float moveSpeed;
    
     public const int __ID__ = 2000900386;
     public override int GetTypeId() => __ID__;
 
     public  void ResolveRef(Tables tables)
     {
+        
         
         
         
@@ -64,6 +67,7 @@ public sealed partial class Bullet : Luban.BeanBase
         + "desc:" + desc + ","
         + "prefab:" + prefab + ","
         + "script:" + script + ","
+        + "moveSpeed:" + moveSpeed + ","
         + "}";
     }
 }

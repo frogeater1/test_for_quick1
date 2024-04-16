@@ -1,9 +1,11 @@
 using System;
 using System.Diagnostics;
 using System.IO;
+using cfg;
 using Demo.Unit;
 using UnityEditor;
 using UnityEngine;
+using Bullet = Demo.Bullet.Bullet;
 using Debug = UnityEngine.Debug;
 using Object = UnityEngine.Object;
 
@@ -58,6 +60,8 @@ namespace Utilities
                     return SimpleJSON.JSON.Parse(textAsset.text);
                 });
 
+                MakeBullet();
+
                 MakeCharacter();
             }
             catch (Exception e)
@@ -70,6 +74,28 @@ namespace Utilities
             }
 
             EditorUtility.DisplayDialog("结果", "load success", "ok");
+        }
+
+        private static void MakeBullet()
+        {
+            foreach (var b in tables.TbBullet.DataList)
+            {
+                var prefab = AssetDatabase.LoadAssetAtPath<GameObject>($"Assets/Prefabs/{b.prefab}.prefab");
+                var go = GameObject.Instantiate(prefab);
+                try
+                {
+                    var script = Type.GetType(b.script);
+                    go.gameObject.AddComponent(script);
+                    
+                    PrefabUtility.SaveAsPrefabAsset(go.gameObject, $"Assets/Imports/Prefabs/Bullets/{b.id}.prefab");
+                    var bulletPrefab = AssetDatabase.LoadAssetAtPath<Bullet>($"Assets/Imports/Prefabs/Bullets/{b.id}.prefab");
+                    bulletPrefab.Load(b);
+                }
+                finally
+                {
+                    GameObject.DestroyImmediate(go.gameObject);
+                }
+            }
         }
 
         private static void MakeCharacter()
@@ -89,6 +115,5 @@ namespace Utilities
                 }
             }
         }
-        
     }
 }

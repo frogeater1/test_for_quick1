@@ -12,19 +12,7 @@ namespace Demo.Skill
         {
             base.Load(cfg);
             var bulletcfg = Tools.tables.TbBullet.Get(cfg.bullet);
-            var script = Type.GetType(bulletcfg.script);
-            var prefab = AssetDatabase.LoadAssetAtPath<GameObject>($"Assets/Prefabs/{bulletcfg.prefab}.prefab");
-            var go = GameObject.Instantiate(prefab);
-            try
-            {
-                go.gameObject.AddComponent(script);
-                PrefabUtility.SaveAsPrefabAsset(go.gameObject, $"Assets/Imports/Prefabs/Bullets/{bulletcfg.id}.prefab");
-                bulletPrefab = AssetDatabase.LoadAssetAtPath<Bullet.Bullet>($"Assets/Imports/Prefabs/Bullets/{bulletcfg.id}.prefab");
-            }
-            finally
-            {
-                GameObject.DestroyImmediate(go.gameObject);
-            }
+            bulletPrefab = AssetDatabase.LoadAssetAtPath<Bullet.Bullet>($"Assets/Imports/Prefabs/Bullets/{bulletcfg.id}.prefab");
         }
 
 
@@ -33,8 +21,11 @@ namespace Demo.Skill
             base.释放(mousePos);
             if (bulletPrefab)
             {
-                var bullet = Instantiate(bulletPrefab);
-                bullet.发射(mousePos);
+                if (Physics.Raycast(Game.Instance.mainCamera.ScreenPointToRay(Input.mousePosition), out var hit, 1000))
+                {
+                    var bullet = Instantiate(bulletPrefab, transform.position, Quaternion.Euler(0, 0, 0));
+                    bullet.发射(hit.point);
+                }
             }
         }
     }

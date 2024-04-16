@@ -17,7 +17,7 @@ namespace Utilities
                 Destroy(gameObject);
             }
         }
-
+        
         protected virtual void OnDestroy()
         {
             if (Instance == this)

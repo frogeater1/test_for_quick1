@@ -4,6 +4,7 @@
     "name": "",
     "desc": "",
     "prefab": "Bullet",
-    "script": "Demo.Bullet.基础子弹"
+    "script": "Demo.Bullet.基础子弹",
+    "moveSpeed": 10
   }
 ]

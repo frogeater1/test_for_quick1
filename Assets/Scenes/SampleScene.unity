@@ -366,6 +366,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f735eec122dd084f886cb9a0a9fafe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCamera: {fileID: 1542734651}
   inputMgr: {fileID: 728507926}
   me: {fileID: 299793696}
 --- !u!114 &728507926
@@ -585,7 +586,7 @@ PrefabInstance:
     - target: {fileID: 3686357566628352963, guid: 067667ae5960ef84ba8fa63449ef1350,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.74
+      value: 2.789
       objectReference: {fileID: 0}
     - target: {fileID: 3686357566628352963, guid: 067667ae5960ef84ba8fa63449ef1350,
         type: 3}
